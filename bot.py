@@ -32,8 +32,8 @@ async def check_tariffs():
             new_ids = set(available_now.keys()) - set(last_available)
             if new_ids:
                 msg = "🚀 Появились новые тарифы:\n\n" + "\n\n".join(
-                    format_tariff(available_now[i]) for i in new_ids
-                )
+										format_tariff(available_now[i]) for i in new_ids
+								) + "\n\n🔗 GitHub: https://github.com/fxfuren"
                 await bot.send_message(CHAT_ID, msg)
                 logging.info(f"Отправлено уведомление о {len(new_ids)} новых тарифах")
 
@@ -47,7 +47,7 @@ async def check_tariffs():
 async def run_bot():
     # Сообщаем в чат, что бот стартовал
     try:
-        await bot.send_message(CHAT_ID, "🟢 Бот запущен. Начинается логирование тарифов.")
+        await bot.send_message(CHAT_ID, "🟢 Play2Go Tariff Bot запущен. Начинается логирование тарифов.")
         logging.info("Бот запущен, уведомление отправлено.")
     except Exception as e:
         logging.error(f"Не удалось отправить стартовое сообщение: {e}")
