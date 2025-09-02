@@ -12,3 +12,5 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", 300))
 TARIFF_FILTERS = [
     f.strip() for f in os.getenv("TARIFF_FILTERS", "").split(",") if f.strip()
 ]
+
+LOG_FILE = os.getenv("LOG_FILE", "bot.log")
