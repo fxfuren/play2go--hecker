@@ -1,8 +1,16 @@
 import httpx
 from config import API_URL, TARIFF_FILTERS
 
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
 async def fetch_tariffs():
-    async with httpx.AsyncClient(timeout=15) as client:
+    """Запрос к API с имитацией браузера"""
+    async with httpx.AsyncClient(headers=HEADERS, timeout=15) as client:
         r = await client.get(API_URL)
         r.raise_for_status()
         return r.json()
