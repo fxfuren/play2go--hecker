@@ -1,0 +1,9 @@
+services:
+  play2go-bot:
+    build: .
+    container_name: play2go-bot
+    env_file:
+      - .env
+    restart: always # <-- важно! контейнер будет перезапускаться всегда
+    volumes:
+      - ./logs:/app/logs # чтобы логи сохранялись на хосте
