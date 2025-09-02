@@ -9,8 +9,8 @@ HEADERS = {
 }
 
 async def fetch_tariffs():
-    """Запрос к API с имитацией браузера"""
-    async with httpx.AsyncClient(headers=HEADERS, timeout=15) as client:
+    """Запрос к API с имитацией браузера и следованием редиректам"""
+    async with httpx.AsyncClient(headers=HEADERS, timeout=15, follow_redirects=True) as client:
         r = await client.get(API_URL)
         r.raise_for_status()
         return r.json()
